@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "./proto";
+
+message Notify {
+    string time = 1;
+    int64 keys = 2;
+}
+
+message RegUsers {
+    int64 users_noreg = 1;
+    int64 users_reg = 2;
+}
+
+service NotifyService {
+    rpc Exchange (Notify) returns (Notify);
+    rpc SendUsers (RegUsers) returns (RegUsers);
+}
